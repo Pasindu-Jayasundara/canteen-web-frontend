@@ -14,7 +14,7 @@ const LoginFormComponent = ({ onFinish }: { onFinish: (values: LoginFormType) =>
     >
       <Form.Item
         name="universityMail"
-        rules={[{ required: true, message: 'Please input your University Email!', type: 'email' }]}
+        rules={[{ required: true, message: 'Please input your valid University Email!', type: 'email', pattern: new RegExp('.+@fot\\.ruh\\.ac\\.lk$') }]}
       >
         <Input prefix={<MailOutlined />} placeholder="University Email" />
       </Form.Item>

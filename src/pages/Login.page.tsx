@@ -2,11 +2,27 @@ import type { JSX } from 'react';
 import LoginForm from '../components/LoginForm.component';
 import type { LoginFormType } from '../types/LoginPage.type';
 import { Image } from 'antd';
+import { AxiosInstance } from '../services/Axios.service';
 
 const LoginPage = (): JSX.Element => {
 
-  const onFinish = (values: LoginFormType) => {
+  const onFinish = async (values: LoginFormType) => {
     console.log('Received values of form: ', values.universityMail, values.rememberMe);
+
+    const isLoginSuccessful = await AxiosInstance.post('/auth/login', {
+      universityMail: values.universityMail,
+    });
+
+    if (isLoginSuccessful) {
+
+      if (values.rememberMe) {
+        localStorage.setItem('universityMail', values.universityMail);
+      } else {
+        localStorage.removeItem('universityMail');
+      }
+
+      window.location.href = '/dashboard';
+    }
   }
 
   return (
