@@ -9,7 +9,7 @@ const LoginPage = (): JSX.Element => {
   const onFinish = async (values: LoginFormType) => {
     console.log('Received values of form: ', values.universityMail, values.rememberMe);
 
-    const isLoginSuccessful = await AxiosInstance.post('/auth/login', {
+    const isLoginSuccessful = await AxiosInstance.post('/api/auth/login', {
       universityMail: values.universityMail,
     });
 
