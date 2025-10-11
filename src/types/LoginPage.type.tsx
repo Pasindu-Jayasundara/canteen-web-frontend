@@ -1,5 +1,4 @@
 export interface LoginFormType {
-  username:string;
-  password:string;
+  universityMail:string;
   rememberMe:boolean;
 }

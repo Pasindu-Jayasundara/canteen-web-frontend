@@ -1,4 +1,4 @@
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { MailOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Flex } from 'antd';
 import type { JSX } from 'react';
 import type { LoginFormType } from '../types/LoginPage.type';
@@ -8,28 +8,21 @@ const LoginFormComponent = ({ onFinish }: { onFinish: (values: LoginFormType) =>
   return (
     <Form
       name="login"
-      initialValues={{ rememberMe: true, username: localStorage.getItem('username'), password: localStorage.getItem('password') }}
+      initialValues={{ rememberMe: true, universityMail: localStorage.getItem('universityMail') }}
       style={{ maxWidth: 360, width: '100%'}}
       onFinish={onFinish}
     >
       <Form.Item
-        name="username"
-        rules={[{ required: true, message: 'Please input your Username!' }]}
+        name="universityMail"
+        rules={[{ required: true, message: 'Please input your University Email!', type: 'email' }]}
       >
-        <Input prefix={<UserOutlined />} placeholder="Username" />
-      </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[{ required: true, message: 'Please input your Password!' }]}
-      >
-        <Input prefix={<LockOutlined />} type="password" placeholder="Password" />
+        <Input prefix={<MailOutlined />} placeholder="University Email" />
       </Form.Item>
       <Form.Item>
         <Flex justify="space-between" align="center">
           <Form.Item name="rememberMe" valuePropName="checked" noStyle>
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
-          <a href="">Forgot password</a>
         </Flex>
       </Form.Item>
 
