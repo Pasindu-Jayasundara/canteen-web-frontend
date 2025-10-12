@@ -23,7 +23,7 @@ const LoginPage = (): JSX.Element => {
         localStorage.removeItem('rememberMe');
       }
 
-      window.location.href = '/dashboard';
+      // window.location.href = '/dashboard';
     }
   }
 
