@@ -3,17 +3,22 @@ import LoginForm from '../components/LoginForm.component';
 import type { LoginFormType } from '../types/LoginPage.type';
 import { Image } from 'antd';
 import { AxiosInstance } from '../services/Axios.service';
+import { useNavigate } from 'react-router';
 
 const LoginPage = (): JSX.Element => {
+
+  const navigate = useNavigate();
 
   const onFinish = async (values: LoginFormType) => {
     console.log('Received values of form: ', values.universityMail, values.rememberMe);
 
-    const isLoginSuccessful = await AxiosInstance.post('/api/auth/login', {
+    const response = await AxiosInstance.post('/api/auth/login', {
       universityMail: values.universityMail,
     });
 
-    if (isLoginSuccessful) {
+    console.log("data:", response.data.message);
+
+    if (response.data.message === "Verify OTP") { 
 
       if (values.rememberMe) {
         localStorage.setItem('universityMail', values.universityMail);
@@ -23,7 +28,7 @@ const LoginPage = (): JSX.Element => {
         localStorage.removeItem('rememberMe');
       }
 
-      // window.location.href = '/dashboard';
+      navigate('/verify-otp', { replace: true, state: { user: response.data.user } });
     }
   }
 

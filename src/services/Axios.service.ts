@@ -6,6 +6,7 @@ export const AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
   timeout: 5000,
   headers: { "Content-Type": "application/json" },
+  withCredentials: true,
 });
 
 
@@ -33,7 +34,7 @@ AxiosInstance.interceptors.response.use(function onFulfilled(response) {
   console.log("Response:", response.data);
 
   // toast.success(response.data?.message || "Success!");
-  return response.data;
+  return response;
 
 }, function onRejected(error) {
   toast.error(error.response?.data?.message || "Something went wrong!");

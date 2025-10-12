@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import LoginPage from './pages/Login.page.tsx';
 import { ToastContainer } from 'react-toastify';
 import DashboardPage from './pages/Dashboard.page.tsx';
+import VerifyOtpPage from './pages/VerifyOtp.page.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById('root')!).render(
 
       <Routes>
         <Route index element={<LoginPage />} />
+        <Route path='/verify-otp' element={<VerifyOtpPage />} />
         <Route path='/dashboard' element={<DashboardPage />} />
       </Routes>
 
