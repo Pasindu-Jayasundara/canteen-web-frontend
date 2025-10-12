@@ -8,7 +8,7 @@ const LoginFormComponent = ({ onFinish }: { onFinish: (values: LoginFormType) =>
   return (
     <Form
       name="login"
-      initialValues={{ rememberMe: true, universityMail: localStorage.getItem('universityMail') }}
+      initialValues={{ rememberMe: localStorage.getItem('rememberMe') === 'true', universityMail: localStorage.getItem('universityMail') }}
       style={{ maxWidth: 360, width: '100%'}}
       onFinish={onFinish}
     >

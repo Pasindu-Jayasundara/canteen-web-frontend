@@ -31,7 +31,9 @@ AxiosInstance.interceptors.request.use(function (config) {
 AxiosInstance.interceptors.response.use(function onFulfilled(response) {
   
   console.log("Response:", response.data);
-  return JSON.parse(response.data.data);
+
+  // toast.success(response.data?.message || "Success!");
+  return response.data;
 
 }, function onRejected(error) {
   toast.error(error.response?.data?.message || "Something went wrong!");

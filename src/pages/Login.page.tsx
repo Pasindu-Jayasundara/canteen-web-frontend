@@ -17,8 +17,10 @@ const LoginPage = (): JSX.Element => {
 
       if (values.rememberMe) {
         localStorage.setItem('universityMail', values.universityMail);
+        localStorage.setItem('rememberMe', 'true');
       } else {
         localStorage.removeItem('universityMail');
+        localStorage.removeItem('rememberMe');
       }
 
       window.location.href = '/dashboard';
