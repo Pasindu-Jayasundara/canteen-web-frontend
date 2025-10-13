@@ -24,13 +24,14 @@ AxiosInstance.interceptors.request.use(function (config) {
 
   return config;
 }, function (error) {
+
   toast.error("Something went wrong!");
   console.error(error);
 }
 );
 
 AxiosInstance.interceptors.response.use(function onFulfilled(response) {
-  
+
   console.log("Response:", response.data);
 
   // toast.success(response.data?.message || "Success!");
