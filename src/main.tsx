@@ -11,6 +11,9 @@ import { AuthProvider } from './context/authContext/Auth.provider.tsx';
 import { PublicRoutes } from './routes/public.routes.tsx';
 import { DashboardComponent } from './components/Dashboard.component.tsx';
 import { ProfileComponent } from './components/Profile.component.tsx';
+import { SettingComponent } from './components/Setting.component.tsx';
+import { AnanlyticsProductComponent } from './components/AnalyticsProduct.component.tsx';
+import { AnalyticsCustomerComponent } from './components/AnalyticsCustomer.component.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -33,7 +36,9 @@ createRoot(document.getElementById('root')!).render(
 
               <Route index element={<DashboardComponent/>} />
               <Route path='profile' element={<ProfileComponent/>} />
-
+              <Route path='settings' element={<SettingComponent/>} />
+              <Route path='analytics/product' element={<AnanlyticsProductComponent/>} />
+              <Route path='analytics/customer' element={<AnalyticsCustomerComponent/>} />
             </Route>
 
             <Route path="" element={<Navigate to={"dashboard"} />} />
