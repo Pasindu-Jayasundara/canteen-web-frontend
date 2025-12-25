@@ -6,18 +6,32 @@ import LoginPage from './pages/Login.page.tsx';
 import { ToastContainer } from 'react-toastify';
 import DashboardPage from './pages/Dashboard.page.tsx';
 import VerifyOtpPage from './pages/VerifyOtp.page.tsx';
+import { ProtectedRoutes } from './routes/protected.routes.tsx';
+import { AuthProvider } from './context/authContext/Auth.provider.tsx';
+import { PublicRoutes } from './routes/public.routes.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ToastContainer />
-    <BrowserRouter>
 
-      <Routes>
-        <Route index element={<LoginPage />} />
-        <Route path='/verify-otp' element={<VerifyOtpPage />} />
-        <Route path='/dashboard' element={<DashboardPage />} />
-      </Routes>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
 
-    </BrowserRouter>
+          {/* public routes */}
+          <Route element={<PublicRoutes />} >
+            <Route index element={<LoginPage />} />
+            <Route path='verify-otp' element={<VerifyOtpPage />} />
+          </Route>
+
+          {/* secure routes */}
+          <Route path="/user" element={<ProtectedRoutes />} >
+            <Route index element={<DashboardPage />} />
+            <Route path="dashboard" element={<DashboardPage />} />
+          </Route>
+
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   </StrictMode>
 )

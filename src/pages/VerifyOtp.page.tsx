@@ -2,11 +2,15 @@ import type { OTPProps } from "antd/es/input/OTP";
 import OTPComponent from "../components/OTP.component";
 import { AxiosInstance } from "../services/Axios.service";
 import { useLocation, useNavigate } from "react-router";
+import { useContext } from "react";
+import type { UserType } from "../types/User.type";
+import { AuthContext } from "../context/authContext/auth.context";
 
 const VerifyOtpPage = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const authContext = useContext(AuthContext);
 
     const { user } = location.state || {};
 
@@ -20,8 +24,15 @@ const VerifyOtpPage = () => {
 
         if (response.data.message === "Login successful") {
 
-            localStorage.setItem('accessToken', response.data.accessToken);
-            navigate('/dashboard', { replace: true, state: { user: user } });
+            const loggedUser: UserType = {
+                id: response.data.user._id,
+                universityMail: response.data.user.universityMail
+            };
+
+            authContext?.setUser?.(loggedUser);
+            localStorage.setItem("user", JSON.stringify(loggedUser));
+            
+            navigate('/user/dashboard', { replace: true });
         }
     }
 

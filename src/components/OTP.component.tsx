@@ -11,7 +11,7 @@ const OTPComponent = ({onChange} : { onChange : (text: string) => void }) : JSX.
   const sharedProps: OTPProps = {
     onChange,
     autoFocus: true
-};
+  };
 
   return (
     <Flex gap="middle" align="flex-start" vertical>
