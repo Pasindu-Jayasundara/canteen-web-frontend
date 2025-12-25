@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppstoreOutlined, MailOutlined, ProductOutlined, ProfileOutlined, SettingOutlined, SlidersOutlined, UserOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, ProductOutlined, ProfileOutlined, SettingOutlined, SlidersOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import { useNavigate } from 'react-router';
