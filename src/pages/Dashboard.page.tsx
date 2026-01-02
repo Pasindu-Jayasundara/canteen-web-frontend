@@ -31,7 +31,7 @@ const DashboardPage = (): JSX.Element => {
                 <MenuComponent />
             </Sider>
             <Layout>
-                <Header style={{ padding: 0, background: colorBgContainer }}>
+                {/* <Header style={{ padding: 0, background: colorBgContainer }}>
                     <Button
                         type="text"
                         icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -42,10 +42,10 @@ const DashboardPage = (): JSX.Element => {
                             height: 64,
                         }}
                     />
-                </Header>
+                </Header> */}
                 <Content
                     style={{
-                        margin: '24px 16px',
+                        margin: '10px 16px',
                         padding: 24,
                         minHeight: 280,
                         background: colorBgContainer,
